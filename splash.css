@@ -1,0 +1,195 @@
+*{
+    /*sets how the total width and height of an element is calculated
+    */
+    box-sizing: border-box;
+    /*EVERY PROJECT*/
+    /*padding and border are INCLUDED in the width*/
+}
+
+body{
+    /*EVERY PROJECT*/
+    margin:0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    color: #404040;
+    /*center everything*/
+    text-align: center;
+}
+
+/*topography*/
+
+h1{
+    color: whitesmoke;
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+/*combinator - paragraphs after an h1 -> NOT THE H1s*/
+h1 + p{
+    color: #f18119;
+    font-weight: 900;
+    font-size: 1.3125rem ;
+    margin: 0;
+}
+
+h2{
+    font-size: 1.3125rem;
+    margin: 0;
+}
+
+h2 + p{
+    color: #f18119;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.top-text{
+    font-size: 1rem;
+    font-weight: 900;
+    color:#f18119;
+    text-transform: uppercase;
+    order: -1;
+    border-top: 5px solid #f18119;
+    border-image: linear-gradient(to left,#ff713b,#ffa51d) 1;
+    margin: 0;
+    padding-top: 2px;
+    
+}
+
+.fine-print{
+    font-size: 0.625rem;
+    letter-spacing: 1px;
+}
+
+strong{
+    font-weight: 900;
+}
+
+.intro{
+    background-color: #404040;
+    background-image: url(space.jpg);
+    /*background-blend-mode: multiply;*/
+    background-size: cover;
+    background-position: center;
+    padding: 0 .25em 1em;
+    /*remember margins no longer collapse with flex*/
+    display:flex;
+    flex-direction: column;
+    /*this is how we center our h1 in the intro div no padding or margin used here */
+    justify-content: space-between;
+    /*at smaller screens we take 50% of the viewport for the intro 
+    div at larger screens we take 100% height of viewport*/
+    min-height: 50vh;
+}
+
+/*topography*/
+
+/*Intro*/
+
+.main-content{
+    padding: 2em 1em;
+}
+
+
+/*this section centers most items on the page */
+.intro > *,
+.main-content > * {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*FORM STYLING*/
+.email-collector{
+    width: 80%;
+    max-width: 300px;
+}
+
+input,.btn{
+    /*width of parent*/
+    width: 100%;
+    border-radius: 5px;
+}
+
+input{
+    font-family: inherit;
+    margin-bottom: .75em;
+    text-align: inherit;
+    padding: 1em;
+    border: 1px solid #404040;
+    transform: scale(1);
+    transition: transform 250ms;
+}
+
+input:focus{
+    transform: scale(1.1);
+}
+
+.btn{
+    /*remember -> make elements inline, but preserve their block capabilities */
+    display:inline-block;
+    padding: 1em 1.5em;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border: 0;
+    cursor:pointer;
+
+}
+
+.btn-primary{
+    background: linear-gradient(to left,#ff713b, #ffa51d );
+    color: whitesmoke;
+    transition: scale(1);
+    transition: transform 250ms;
+}
+
+.btn-primary:hover,
+.btn-primary:focus{
+    transform: scale(1.1);
+    color:black;
+}
+
+
+/*larger screen layout, browser should default to this layout first */
+@media (min-width: 500px){
+    body{
+        /*increase font size at bigger screen*/
+        font-size: 1.125rem;
+        display:flex;
+    }
+
+    h1{
+        font-size: 3.5rem;
+    }
+
+    h2
+    h1+p{
+        font-size: 1.75rem;
+    }
+
+    .intro,
+    .main-content{
+        width: 50%;
+        /*make the main containers take the full height of the viewport
+          min height keeps our layout from breaking on super small screen sizes.
+
+        */
+
+        /*1vh === 1% of viewport, 100vh === 100% of viewport height*/
+        min-height: 100vh;
+    }
+
+    .main-content{
+        display:flex;
+        /*switched the flexbox axises*/
+        /*sets the main axis*/
+        flex-direction: column;
+        justify-content: center;
+
+    }
+}
